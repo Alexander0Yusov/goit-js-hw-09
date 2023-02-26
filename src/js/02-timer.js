@@ -1,7 +1,13 @@
 import flatpickr from 'flatpickr';
+import Notiflix from 'notiflix';
 
 // Додатковий імпорт стилів
 import 'flatpickr/dist/flatpickr.min.css';
+
+Notiflix.Notify.init({
+  timeout: 2500,
+  clickToClose: true,
+});
 
 const rfs = {
   printDaysEl: document.querySelector('[data-days]'),
@@ -51,9 +57,6 @@ function convertMs(ms) {
 }
 
 function onBtnStartHandler() {
-  if (isBtnStartValid()) {
-    alert('Please choose a date in the future');
-  }
   btnStartSwitchOff();
   startTimer();
 }
@@ -99,7 +102,7 @@ function btnStartSwitchOff() {
 }
 
 function attentionText() {
-  alert('Please choose a date in the future');
+  Notiflix.Notify.failure('Please choose a date in the future');
 }
 
 function attentionConsoleText(text) {
